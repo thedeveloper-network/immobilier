@@ -18,7 +18,7 @@ jobs:
       - run: npm run build --workspace=portal
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: /packages/portal
+          entryPoint: packages/portal
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMOBILIER_HOMES }}'
           channelId: live
