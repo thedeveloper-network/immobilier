@@ -4,11 +4,11 @@
 name: Deploy to Firebase Hosting on merge
 'on':
   push:
-    branches:
-      - master
+    tags:
+      - portal
 jobs:
   build_and_deploy:
-    if: startsWith(github.event.ref, 'refs/tags/portal')
+    # if: startsWith(github.event.ref, 'refs/tags/portal')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
