@@ -7,7 +7,10 @@ const app: Express = express();
 const port = process.env.PORT;
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('We are in BUSINESS!');
+    res.header('Content-type', 'application/json');
+    res.send({
+        message: 'We are now really in BUSINESS!'
+    });
 });
 
 app.listen(port, () => {
