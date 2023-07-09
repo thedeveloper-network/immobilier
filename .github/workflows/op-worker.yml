@@ -24,6 +24,10 @@ jobs:
             npm install
             echo "npm packages installed"
             npm run build
-            sudo pm2 start node dist/index.js
+            EXPORT REDIS_HOST=${{ secrets.REDIS_HOST }}
+            EXPORT REDIS_PORT=${{ secrets.REDIS_PORT }}
+            EXPORT REDIS_USER=${{ secrets.REDIS_USER }}
+            EXPORT REDIS_PASS=${{ secrets.REDIS_PASS }}
+            sudo pm2 start dist/index.js
 
             echo 'Deployment successful to digital ocean' 
