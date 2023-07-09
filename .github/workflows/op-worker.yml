@@ -15,6 +15,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
+            sudo pm2 kill
             rm -rf app
             mkdir app 
             cd app 
@@ -23,5 +24,6 @@ jobs:
             npm install
             echo "npm packages installed"
             npm run build
-            npm start
+            sudo pm2 start node dist/index.js
+
             echo 'Deployment successful to digital ocean' 
