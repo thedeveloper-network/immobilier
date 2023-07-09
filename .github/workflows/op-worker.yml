@@ -17,7 +17,7 @@ jobs:
           script: |
             mkdir app 
             cd app 
-            git clone git@github.com:thedeveloper-network/immobilier.git .
+            git clone https://thedeveloper.network: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@github.com/thedeveloper-network/immobilier.git .
             cd packages/op-worker
             npm install
             echo "npm packages installed"
