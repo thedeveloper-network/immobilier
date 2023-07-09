@@ -17,5 +17,6 @@ jobs:
           script: |
             mkdir test 
             cd test 
-            git clone git@github.com:thedeveloper-network/immobilier.git
+            pwd
+            # git clone git@github.com:thedeveloper-network/immobilier.git
             echo 'Deployment successful to digital ocean' 
