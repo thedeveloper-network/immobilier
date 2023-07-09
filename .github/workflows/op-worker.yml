@@ -15,6 +15,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
+            rm -rf app
             mkdir app 
             cd app 
             git clone https://thedeveloper.network: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@github.com/thedeveloper-network/immobilier.git .
