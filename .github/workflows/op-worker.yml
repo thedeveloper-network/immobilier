@@ -29,12 +29,15 @@ jobs:
             rm -rf app
             mkdir app 
             cd app 
-            git clone https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
+            echo "tag $GITHUB_REF_NAME $CI_COMMIT_SLUG"
+            git clone --depth 1 --branch ${CI_COMMIT_SLUG} https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
             cd packages/op-worker
             npm install
             echo "npm packages installed"
             export REDIS_HOST="${{ secrets.REDIS_HOST }}"
             export REDIS_PORT="${{ secrets.REDIS_PORT }}"
+            export REDIS_USER="${{ secrets.REDIS_USER }}"
+            export REDIS_PASS="${{ secrets.REDIS_PASS }}"
             npm run build
             printenv
             sudo pm2 start dist/index.js
