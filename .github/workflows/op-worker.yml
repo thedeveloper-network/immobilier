@@ -33,6 +33,7 @@ jobs:
             cd packages/op-worker
             npm install
             echo "npm packages installed"
+            export REDIS_HOST="PLM"
             # npm run build
             printenv
             # sudo pm2 start dist/index.js
