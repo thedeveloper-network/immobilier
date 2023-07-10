@@ -29,8 +29,8 @@ jobs:
             rm -rf app
             mkdir app 
             cd app 
-            echo "tag $GITHUB_REF_NAME $CI_COMMIT_SLUG"
-            git clone --depth 1 --branch ${CI_COMMIT_SLUG} https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
+            echo "tag ${{ github.ref_name }}"
+            git clone --branch ${{ github.ref_name }} https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
             cd packages/op-worker
             npm install
             echo "npm packages installed"
