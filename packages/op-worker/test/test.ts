@@ -12,9 +12,10 @@ const queue = new Queue('immo:work', { connection: {
 }});
 
 async function addJobs() {
-    await queue.add('myJobName1', { foo: 'bar' });
-    await queue.add('myJobName2', { qux: 'baz' });
-    console.log('jobs have been produced');
+    const j1 = await queue.add('myJobName1', { foo: 'bar' });
+    console.log( `added job ${j1.id}` );
+    const j2 = await queue.add('myJobName2', { qux: 'baz' });
+    console.log( `added job ${j2.id}` );
 
     process.exit();
 }
