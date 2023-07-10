@@ -3,6 +3,8 @@ dotenv.config();
 
 import { Queue, Worker } from 'bullmq';
 
+console.log('host', process.env.REDIS_HOST );
+
 const worker = new Worker('immo:work', async (job)=>{
     await new Promise( ( res ) => {
         setTimeout( () => res(true), 2000 );
