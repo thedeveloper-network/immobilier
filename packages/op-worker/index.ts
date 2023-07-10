@@ -3,18 +3,20 @@ dotenv.config();
 
 import { Queue, Worker } from 'bullmq';
 
-const worker = new Worker('immo:work', async (job)=>{
-    await new Promise( ( res ) => {
-        setTimeout( () => res(true), 2000 );
-    });
+console.log('host', process.env.REDIS_HOST );
 
-}, { connection: {
-    host: process.env.REDIS_HOST,
-    port: Number( process.env.REDIS_PORT ),
-    username: process.env.REDIS_USER,
-    password: process.env.REDIS_PASS
-}});
+// const worker = new Worker('immo:work', async (job)=>{
+//     await new Promise( ( res ) => {
+//         setTimeout( () => res(true), 2000 );
+//     });
 
-worker.on('completed', job => {
-    console.log(`${job.id} has completed!`);
-});
+// }, { connection: {
+//     host: process.env.REDIS_HOST,
+//     port: Number( process.env.REDIS_PORT ),
+//     username: process.env.REDIS_USER,
+//     password: process.env.REDIS_PASS
+// }});
+
+// worker.on('completed', job => {
+//     console.log(`${job.id} has completed!`);
+// });
