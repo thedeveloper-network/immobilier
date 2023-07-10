@@ -3,17 +3,18 @@ on:
   push:
     tags:
       - 'worker-*'
+env:
+  REDIS_HOST: ${{ secrets.REDIS_HOST }}
+  REDIS_PORT: ${{ secrets.REDIS_PORT }}
+  REDIS_USER: ${{ secrets.REDIS_USER }}
+  REDIS_PASS: ${{ secrets.REDIS_PASS }}
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy NodeJS app
         uses: appleboy/ssh-action@v0.1.3
-        env:
-          REDIS_HOST: ${{ secrets.REDIS_HOST }}
-          REDIS_PORT: ${{ secrets.REDIS_PORT }}
-          REDIS_USER: ${{ secrets.REDIS_USER }}
-          REDIS_PASS: ${{ secrets.REDIS_PASS }}
+        
         with:
           host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
           key: ${{secrets.SSH_KEY}} # Private or public key of the server
