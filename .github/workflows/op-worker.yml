@@ -33,9 +33,10 @@ jobs:
             cd packages/op-worker
             npm install
             echo "npm packages installed"
-            export REDIS_HOST="${{ secrets.SSH_HOST }}"
-            # npm run build
+            export REDIS_HOST="${{ secrets.REDIS_HOST }}"
+            export REDIS_PORT="${{ secrets.REDIS_PORT }}"
+            npm run build
             printenv
-            # sudo pm2 start dist/index.js
+            sudo pm2 start dist/index.js
 
             echo 'Deployment successful to digital ocean' 
