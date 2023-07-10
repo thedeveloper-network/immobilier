@@ -19,6 +19,7 @@ jobs:
           key: ${{secrets.SSH_KEY}} # Private or public key of the server
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
           envs: REDIS_HOST,REDIS_PORT,REDIS_USER,REDIS_PASS
+          all_envs: true
           script: |
             sudo pm2 kill
             rm -rf app
@@ -28,11 +29,8 @@ jobs:
             cd packages/op-worker
             npm install
             echo "npm packages installed"
-            npm run build
-            export REDIS_HOST="$REDIS_HOST"
-            export REDIS_PORT="$REDIS_PORT"
-            export REDIS_USER="$REDIS_USER"
-            export REDIS_PASS="$REDIS_PASS"
-            sudo pm2 start dist/index.js
+            # npm run build
+            printenv
+            # sudo pm2 start dist/index.js
 
             echo 'Deployment successful to digital ocean' 
