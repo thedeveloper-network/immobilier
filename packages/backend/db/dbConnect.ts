@@ -1,5 +1,5 @@
 import { DataSource } from "typeorm";
-import { Listing } from "../models/Listing";
+import { ListingModel } from "../models/Listing";
 
 
 
@@ -17,7 +17,7 @@ export const initDB = () => {
             database: process.env.DB_NAME,
             synchronize: process.env.ENV == 'dev'? true : false,
             logging: process.env.ENV == 'dev'? true : false,
-            entities: [Listing],
+            entities: [ListingModel],
             subscribers: [],
             migrations: [],
         })

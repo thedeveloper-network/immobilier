@@ -1,11 +1,11 @@
 import express, { Request, Response } from 'express';
 import { AppDataSource } from '../db/dbConnect';
-import { Listing } from '../models/Listing';
+import { ListingModel } from '../models/Listing';
 const router = express.Router();
 
 router.get('/db/test/list', async ( req: Request, res: Response ) => {
     try {
-        const lRep = AppDataSource.getRepository( Listing );
+        const lRep = AppDataSource.getRepository( ListingModel );
         const listings = await lRep.find();
         res.status(200).send({
             message: 'ok',
@@ -19,12 +19,12 @@ router.get('/db/test/list', async ( req: Request, res: Response ) => {
 });
 router.get('/db/test/create', async ( req: Request, res: Response ) => {
     try {
-        const listing = new Listing()
+        const listing = new ListingModel()
         listing.name = 'New Listing';
         listing.description = 'Test '+ new Date().getTime();
         listing.published = false;
 
-        const lRep = AppDataSource.getRepository( Listing );
+        const lRep = AppDataSource.getRepository( ListingModel );
         await lRep.save( listing );
 
         res.status(200).send({
