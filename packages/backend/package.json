@@ -1,19 +1,25 @@
 {
-  "name": "backend",
+  "name": "@immobilier/backend",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "npx tsc",
     "start": "node dist/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\""
+    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+    "launch-pg": "docker run -d --name=postgres-dev -p 5432:5432 -e POSTGRES_PASSWORD=123456 postgres",
+    "close-pg": "docker kill postgres-dev && docker rm postgres-dev",
+    "launch-redis": "docker run -d --name=redis-dev -h 127.0.0.1 -p 6379:6379 redis",
+    "close-redis": "docker kill redis-dev && docker rm redis-dev"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "pg": "^8.11.1",
+    "typeorm": "^0.3.17"
   },
   "devDependencies": {
     "@types/express": "^4.17.17",

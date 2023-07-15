@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "remove_worker_tags": "git push --delete origin $(git tag -l \"worker-*\") && git tag -d $(git tag -l \"worker-*\")"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-
   "workspaces": [
-    "packages/portal"
-  ]
+    "packages/*"
+  ],
+  "dependencies": {
+    "typescript": "^5.1.6"
+  }
 }
