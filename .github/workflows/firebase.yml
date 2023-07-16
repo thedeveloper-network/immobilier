@@ -19,6 +19,10 @@ jobs:
       - run: npx nx build portal
     #   - run: npm install --workspace=portal
     #   - run: npm run build --workspace=portal
+      - name: copy firebase config
+        run: cp ./packages/portal/firebase.json ./dist/packages/portal/
+      - name: copy firebaserc
+        run: cp ./packages/portal/.firebaserc ./dist/packages/portal/
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           entryPoint: dist/packages/portal
