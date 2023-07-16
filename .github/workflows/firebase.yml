@@ -31,10 +31,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: build
-          path: build
+          path: dist
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: build
+          entryPoint: dist
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMOBILIER_HOMES }}'
           channelId: live
