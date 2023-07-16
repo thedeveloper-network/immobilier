@@ -17,12 +17,12 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npx nx build portal
-      - run: cp ./packages/portal/firebase.json ./dist/packages/portal/
-      - run: cp ./packages/portal/.firebaserc ./dist/packages/portal/
+      - run: cp ./packages/portal/firebase.json ./dist/packages/
+      - run: cp ./packages/portal/.firebaserc ./dist/packages/
       - uses: actions/upload-artifact@v2
         with:
           name: build
-          path: dist/packages/portal
+          path: dist/packages/
   deploy:
     runs-on: ubuntu-latest
     needs: build
