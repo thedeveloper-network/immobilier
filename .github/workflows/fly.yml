@@ -13,11 +13,6 @@ jobs:
     #   - uses: nrwl/nx-set-shas@v3
       - run: npm ci
       - run: npx nx build backend
-  deploy:
-    needs: main
-    name: Deploy app
-    runs-on: ubuntu-latest
-    steps:
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only --detach --dockerfile ./packages/backend/Dockerfile --config ./packages/backend/fly.toml
         env:
