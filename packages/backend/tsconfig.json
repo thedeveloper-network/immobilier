@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "experimentalDecorators": true,
@@ -6,4 +7,20 @@
     "outDir": "./dist",                                   /* Specify an output folder for all emitted files. */
   },
   "include": ["./"],
+=======
+  "extends": "../../tsconfig.base.json",
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./tsconfig.spec.json"
+    }
+  ],
+  "compilerOptions": {
+    "esModuleInterop": true
+  }
+>>>>>>> rebuild
 }

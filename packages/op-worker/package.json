@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "@immobilier/op-worker",
   "version": "1.0.0",
   "description": "",
@@ -21,4 +22,9 @@
     "winston": "^3.9.0",
     "winston-syslog": "^2.7.0"
   }
+=======
+  "name": "@./op-worker",
+  "version": "0.0.1",
+  "type": "commonjs"
+>>>>>>> rebuild
 }
