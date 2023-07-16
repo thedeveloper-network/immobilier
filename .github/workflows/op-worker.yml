@@ -1,0 +1,43 @@
+name: Build & Deploy
+on:
+  push:
+    tags:
+      - 'worker-*'
+env:
+  REDIS_HOST: ${{ secrets.REDIS_HOST }}
+  REDIS_PORT: ${{ secrets.REDIS_PORT }}
+  REDIS_USER: ${{ secrets.REDIS_USER }}
+  REDIS_PASS: ${{ secrets.REDIS_PASS }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy NodeJS app
+        uses: appleboy/ssh-action@v0.1.3
+        env:
+          REDIS_HOST: ${{ secrets.REDIS_HOST }}
+          REDIS_PORT: ${{ secrets.REDIS_PORT }}
+          REDIS_USER: ${{ secrets.REDIS_USER }}
+          REDIS_PASS: ${{ secrets.REDIS_PASS }}
+        with:
+          host: ${{secrets.SSH_HOST}} # IP address of the server you wish to ssh into
+          key: ${{secrets.SSH_KEY}} # Private or public key of the server
+          username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
+          envs: REDIS_HOST,REDIS_PORT,REDIS_USER,REDIS_PASS
+          script: |
+            sudo pm2 kill
+            rm -rf app
+            mkdir app 
+            cd app 
+            echo "tag ${{ github.ref_name }}"
+            git clone --branch ${{ github.ref_name }} https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
+            # cd packages/op-worker
+            npm install
+            echo "npm packages installed"
+            export REDIS_HOST="${{ secrets.REDIS_HOST }}"
+            export REDIS_PORT="${{ secrets.REDIS_PORT }}"
+            export REDIS_USER="${{ secrets.REDIS_USER }}"
+            export REDIS_PASS="${{ secrets.REDIS_PASS }}"
+            npx nx build op-worker
+            sudo pm2 start dist/packages/op-worker/src/index.js
+            echo 'Deployment successful to digital ocean' 
