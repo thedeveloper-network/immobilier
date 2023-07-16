@@ -2,7 +2,9 @@
   "name": "@./source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "remove_tags": "git push --delete origin $(git tag -l \"backend-*\") && git tag -d $(git tag -l \"backend-*\")"
+  },
   "private": true,
   "dependencies": {
     "@nrwl/cli": "^15.9.3",
