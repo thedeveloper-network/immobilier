@@ -2,6 +2,7 @@ FROM node:alpine
 # Create app directory
 WORKDIR /usr/src/app
 
+<<<<<<< HEAD
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
@@ -16,3 +17,9 @@ RUN npm run build
 # COPY ./dist .
 EXPOSE 8080
 CMD [ "node", "dist/index.js" ]
+=======
+COPY ./dist/packages/backend .
+RUN npm install
+EXPOSE 8080
+CMD [ "node", "main.js" ]
+>>>>>>> rebuild

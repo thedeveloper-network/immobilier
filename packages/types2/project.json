@@ -1,0 +1,26 @@
+{
+  "name": "types2",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/types2/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/types2",
+        "main": "packages/types2/src/index.ts",
+        "tsConfig": "packages/types2/tsconfig.lib.json",
+        "assets": ["packages/types2/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/types2/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
