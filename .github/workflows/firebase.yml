@@ -20,11 +20,13 @@ jobs:
       - run: cd dist/packages && ls -a
       - run: cp ./packages/portal/firebase.json ./dist/packages/portal/
       - run: cp ./packages/portal/.firebaserc ./dist/packages/portal/
-      - run: ls -a
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - run: cd dist/packages/portal && ls -a
+      - name: Depoly firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          entryPoint: dist/packages/portal
+          entryPoint: ./dist/packages/portal
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_IMMOBILIER_HOMES }}'
           channelId: live
           projectId: immobilier-homes
+          run: ls -a
