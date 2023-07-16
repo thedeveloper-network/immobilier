@@ -32,6 +32,8 @@ jobs:
         with:
           name: build
           path: dist
+      - run: ls -a
+      - run: cd dist && ls -a
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           entryPoint: dist
