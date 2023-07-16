@@ -17,9 +17,10 @@ jobs:
           node-version: 18
       - run: npm ci
       - run: npx nx build portal
-      - run: ls -a
+      - run: cd dist/packages && ls -a
       - run: cp ./packages/portal/firebase.json ./dist/packages/portal/
       - run: cp ./packages/portal/.firebaserc ./dist/packages/portal/
+      - run: ls -a
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           entryPoint: dist/packages/portal
