@@ -4,14 +4,26 @@ on:
     tags:
       - 'backend-*'
 jobs:
-  deploy:
-    name: Deploy app
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
+  install:
+    name: Install
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install
+        run: npm ci
       - name: Build
         run: npx nx build backend
+#   deploy:
+#     name: Deploy app
+#     runs-on: ubuntu-latest
+    # steps:
+      
+      
     #   - uses: superfly/flyctl-actions/setup-flyctl@master
     #   - run: cd packages/backend && flyctl deploy --remote-only --detach
     #     env:
