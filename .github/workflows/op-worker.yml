@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: build
-          path: dist/packages/
+          path: dist/packages/op-worker
   server-clean:
     runs-on: ubuntu-latest
     steps:
@@ -65,5 +65,5 @@ jobs:
             host: ${{ secrets.DO_SSH_HOST }}
             username: ${{ secrets.DO_SSH_USERNAME }}
             key: ${{ secrets.DO_SSH_KEY }}
-            source: "dist/op-worker/*"
+            source: "dist/*"
             target: ~/app

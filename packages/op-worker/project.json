@@ -11,7 +11,9 @@
         "outputPath": "dist/packages/op-worker",
         "main": "packages/op-worker/src/index.ts",
         "tsConfig": "packages/op-worker/tsconfig.lib.json",
-        "assets": ["packages/op-worker/*.md"]
+        "assets": ["packages/op-worker/*.md"],
+        "generateLockfile": false,
+        "external": "none"
       }
     },
     "lint": {
