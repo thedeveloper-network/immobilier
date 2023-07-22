@@ -34,7 +34,7 @@ jobs:
           username: ${{ secrets.DO_SSH_USERNAME }} # User of the server you want to ssh into
           envs: REDIS_HOST,REDIS_PORT,REDIS_USER,REDIS_PASS
           script: |
-            sudo pm2 kill
+            pm2 kill
             rm -rf app
             mkdir app
             # cd app 
@@ -58,12 +58,12 @@ jobs:
           uses: actions/download-artifact@v2
           with:
             name: build
-            path: dist
+            path: .
         - name: Deploy to DO
           uses: appleboy/scp-action@v0.1.4
           with:
             host: ${{ secrets.DO_SSH_HOST }}
             username: ${{ secrets.DO_SSH_USERNAME }}
             key: ${{ secrets.DO_SSH_KEY }}
-            source: "dist/*"
+            source: "./*"
             target: ~/app
