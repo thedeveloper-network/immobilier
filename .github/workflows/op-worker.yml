@@ -20,8 +20,8 @@ jobs:
           username: ${{ secrets.DO_SSH_USERNAME }} # User of the server you want to ssh into
           envs: REDIS_HOST,REDIS_PORT,REDIS_USER,REDIS_PASS
           script: |
-            sudo pm2 kill
-            rm -rf app
+            # sudo pm2 kill
+            # rm -rf app
             mkdir app
             mkdir test-do 
             # cd app 
