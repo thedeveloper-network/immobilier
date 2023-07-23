@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 18
       - run: npm ci
-      - run: npx nx build op-worker
+      - run: npx nx build op-worker --skip-nx-cache 
 
       - uses: actions/upload-artifact@v2
         with:
