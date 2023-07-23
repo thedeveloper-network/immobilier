@@ -83,4 +83,5 @@ jobs:
             cd ~/app
             tar -xf node.tar node_modules
             rm -rf node.tar
+            npm install -g pm2
             pm2 start src/index.js
