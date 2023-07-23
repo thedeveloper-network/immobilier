@@ -70,4 +70,4 @@ jobs:
             cd ~/app
             tar -xf node.tar node_modules
             rm -rf node.tar
-            sudo pm2 start src/index.js
+            pm2 start src/index.js
