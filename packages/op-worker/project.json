@@ -2,10 +2,11 @@
   "name": "op-worker",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "packages/op-worker/src",
-  "projectType": "library",
+  "projectType": "application",
   "targets": {
     "build": {
       "executor": "@nx/js:tsc",
+      "defaultConfiguration": "production",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/packages/op-worker",
