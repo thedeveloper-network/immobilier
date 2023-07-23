@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "remove_tags": "git push --delete origin $(git tag -l \"backend-*\") && git tag -d $(git tag -l \"backend-*\")"
+    "remove-portal-tags": "git push --delete origin $(git tag -l \"portal-*\") && git tag -d $(git tag -l \"portal-*\")",
+    "remove-backend-tags": "git push --delete origin $(git tag -l \"backend-*\") && git tag -d $(git tag -l \"backend-*\")",
+    "remove-worker-tags": "git push --delete origin $(git tag -l \"worker-*\") && git tag -d $(git tag -l \"worker-*\")"
   },
   "private": true,
   "dependencies": {
