@@ -71,6 +71,7 @@ jobs:
             target: ~/app
   install:
     runs-on: ubuntu-latest
+    needs: deploy
     steps:
       - name: Install Node App
         uses: appleboy/ssh-action@v0.1.3
