@@ -39,19 +39,6 @@ jobs:
             pm2 kill
             rm -rf app
             mkdir app
-            # cd app 
-            # echo "tag ${{ github.ref_name }}"
-            # git clone --branch ${{ github.ref_name }} https://thedeveloper.network:${{ secrets.GITHUB_TOKEN }}@github.com/thedeveloper-network/immobilier.git .
-            # # cd packages/op-worker
-            # npm ci
-            # echo "npm packages installed"
-            # export REDIS_HOST="${{ secrets.REDIS_HOST }}"
-            # export REDIS_PORT="${{ secrets.REDIS_PORT }}"
-            # export REDIS_USER="${{ secrets.REDIS_USER }}"
-            # export REDIS_PASS="${{ secrets.REDIS_PASS }}"
-            # npx nx build op-worker
-            # sudo pm2 start dist/packages/op-worker/src/index.js
-            # echo 'Deployment successful to digital ocean' 
   deploy:
     runs-on: ubuntu-latest
     needs: [build,server-clean]
@@ -83,5 +70,4 @@ jobs:
             cd ~/app
             tar -xf node.tar node_modules
             rm -rf node.tar
-            npm install -g pm2
-            pm2 start src/index.js
+            sudo pm2 start src/index.js
